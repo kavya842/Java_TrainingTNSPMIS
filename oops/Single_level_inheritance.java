@@ -1,21 +1,23 @@
-class animal{
-    void eat(){
-        System.out.println("Animal is Eating...");
-    }
 
-}
-class dog extends animal{
-    void bark(){
-        System.out.println("Dog isBarking...");
+//-----------------------Single level inheritance-----------------------------
+
+class MobilePhone {
+    void makeCall() {
+        System.out.println("Making a phone call");
     }
 }
 
-public class Single_level_inheritance {
-    
+class Smartphone extends MobilePhone {
+    void browseInternet() {
+        System.out.println("Browsing the internet");
+    }
+}
+
+public class Single_level_inheritance{
     public static void main(String[] args) {
-        dog d = new dog();
-        d.eat();
-        d.bark();
+        Smartphone s = new Smartphone();
+
+        s.makeCall();
+        s.browseInternet();
     }
-    
 }
