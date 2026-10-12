@@ -1,4 +1,6 @@
-
+//--------------------------------Hierarchical Inheritance-----------------------------
+//Hierarchical Inheritance:-
+// Hierarchical inheritance in Java is a type of inheritance in which multiple classes inherit from a single parent class.
 class CollegeStaff {
     void collegeName() {
         System.out.println("DVR & Dr. HS MIC College of Technology");
