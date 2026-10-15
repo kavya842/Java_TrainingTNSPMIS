@@ -28,22 +28,7 @@
 //     }
 // }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+//!Ex1
 // class  Box{
 //     private Object item;
 //     void set(Object item){
@@ -64,3 +49,30 @@
 //         System.out.println(t);
 //     }
 // }
+
+//!Example: Student Marks Storage Using Generics
+//Imagine you want to store marks for different subjects. Instead of creating separate classes for each data type, you can create one generic class and reuse it.
+//! Using generics
+class Marks<T>{
+    T value;
+    Marks(T value){
+        this.value=value;
+    }
+    void display(){
+        System.out.println("Marks:"+value);
+    }
+}
+class gen{
+    public static void main(String[] args){
+        
+        Marks<Integer> m1=new Marks<>(95);
+        m1.display();
+
+        Marks<Double> m2 = new Marks<>(89.5);
+        m2.display();
+
+        Marks<String> m3 = new Marks<>("A Grade");
+        m3.display();
+
+    }
+}
