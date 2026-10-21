@@ -1,0 +1,473 @@
+pom.xml — contains project configuration and dependencies.
+
+src/main/java — contains your application code.
+
+src/test/java — contains test code, such as JUnit tests.
+
+target/classes — contains compiled application classes.
+
+target/test-classes — contains compiled test classes.
+
+
+Mana goal enti ante: Java lo Calculator program raasi, JUnit tho automatic testing chesi, Maven tho project ni build cheyyadam.
+1. Manam enduku ila chestunnam?
+Suppose manam oka real company lo Java application develop chestunnam. App lo hundreds of classes, thousands of lines of code untayi. Prathi sari manually check cheyyadam difficult.
+
+Anduke companies Maven + JUnit use chestayi.
+
+1. Calculator.java — Main code
+
+Manam application logic rastam.
+
+Example: add(2, 3) returns 5.
+
+
+
+
+2. CalculatorTest.java — Testing
+
+Manam rasina code correct ga work avutundo automatic ga check chestundi.
+
+Example: assertEquals(5, calculator.add(2, 3)).
+
+
+
+
+3. pom.xml — Project configuration
+
+Project ki kavalsina libraries, Java version, plugins lantivi define chestam. JUnit dependency kuda ikkade add chestam.
+
+
+
+
+4. Maven commands — Automatic work
+
+mvn test ante code compile chesi tests run cheyyadam.
+
+mvn package ante tests run chesi project ni JAR file ga package cheyyadam.
+
+
+
+2. Mana project lo em jarigindi?
+Manam mvn test run chesinappudu output ila vachindi:
+Tests run: 3
+Failures: 0
+Errors: 0
+BUILD SUCCESS
+
+
+Dini meaning:
+- Addition test pass ayyindi.
+- Division test pass ayyindi.
+- Zero tho divide chesinappudu exception vastundo test pass ayyindi.
+Tarvatha mvn package run chesinappudu Maven mana project ki JAR file create chesindi.
+3. Real company lo idi ela useful?
+Suppose nuvvu banking application develop chestunnav. Account balance calculate cheyyadaniki code rasav.
+- BankAccount.java — actual application logic.
+- BankAccountTest.java — deposit, withdrawal, balance calculations correct ga unnayo check chestundi.
+- pom.xml — required dependencies and build settings.
+- Maven — code ni compile chesi tests run chesi, application ni package chestundi.
+Code change chesina prathi sari tests run cheyyachu. Dini valla bugs ni early ga identify cheyyagalamu.
+4. Ee concepts gurthupettuko
+Technology	Main purpose
+Java	Application develop cheyyadaniki
+JUnit 5	Code ni automatic ga test cheyyadaniki
+Maven	Dependencies manage cheyyadaniki, build and package cheyyadaniki
+pom.xml	Maven project configuration
+JAR	Compiled Java classes and resources ni package chesina file
+Simple ga cheppalante: Java tho code rastam, JUnit tho code correct ga undo test chestam, Maven tho ee process ni automate chesi application ni package chestam.
+
+Ippudu neeku Maven enduku use chestamo clear ayyinda? Next manam pom.xml lo dependency add chesthe Maven automatic ga library ni ela download chestundo practical example tho nerchukovachu.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+give me all content in english step by step what we do
+
+
+
+
+
+
+
+
+
+
+
+
+
+Maven + JUnit 5 — Complete Step-by-Step Notes
+These notes explain everything we did in your Java Calculator project, from understanding Maven to running tests and creating a JAR file.
+Step 1: Understand what we are building
+Our project is a simple Java Calculator application. We want to:
+1. Write Java code.
+2. Test the code automatically.
+3. Manage required libraries.
+4. Compile the code.
+5. Package the application into a JAR file.
+We use three main technologies:
+
+Java
+
+Used to write the application logic, such as addition and division.
+
+
+
+
+JUnit 5
+
+Used to write automated tests that check whether the application behaves correctly.
+
+
+
+
+Apache Maven
+
+Used to manage dependencies, compile code, execute tests, and package the project.
+
+
+
+Step 2: Verify Java and Maven installation
+We checked whether Java and Maven were installed and accessible from Command Prompt.
+
+Commands:
+java -version
+mvn --version
+
+
+Your environment showed:
+- Java: 21.0.12.1
+- Maven: 3.10.0
+Maven was available in Command Prompt, so we could run Maven commands directly.
+
+Why is this necessary?
+
+Java provides the development and runtime tools. Maven uses those tools to build our project.
+Step 3: Understand the Maven project structure
+Our project has a pom.xml file and Java source files.
+
+The structure relative to the folder containing pom.xml is:
+JUnit5/
+└── src/                         ← Project root containing pom.xml
+    ├── pom.xml
+    ├── src/
+    │   ├── main/
+    │   │   └── java/
+    │   │       └── Calculator.java
+    │   └── test/
+    │       └── java/
+    │           └── CalculatorTest.java
+    └── target/
+
+
+The outer src folder is currently your project root because that is where your pom.xml is located. In a standard Maven project, the POM would normally be in the outer JUnit5 folder, with one src folder underneath it.
+
+What each file and folder means:
+File or folder	Purpose
+pom.xml	Maven project configuration
+src/main/java	Application source code
+src/test/java	Test source code
+target/classes	Compiled application classes
+target/test-classes	Compiled test classes
+target/surefire-reports	Test reports, when generated
+target/*.jar	Packaged JAR file
+Important: Maven uses standard folder names relative to the location of pom.xml. This is why we had to correct the folder structure.
+Step 4: Write the application code
+File: Calculator.java
+
+Location: src/main/java/Calculator.java relative to the project root.
+
+public class Calculator {
+
+    public int add(int a, int b) {
+        return a + b;
+    }
+
+    public int divide(int a, int b) {
+        if (b == 0) {
+            throw new IllegalArgumentException(
+                "Cannot divide by zero."
+            );
+        }
+
+        return a / b;
+    }
+}
+
+
+
+Explanation
+The add() method
+public int add(int a, int b) {
+    return a + b;
+}
+
+
+- Accepts two integer values.
+- Adds them.
+- Returns the result.
+For example, add(2, 3) returns 5.
+
+The divide() method
+public int divide(int a, int b) {
+    if (b == 0) {
+        throw new IllegalArgumentException(
+            "Cannot divide by zero."
+        );
+    }
+
+    return a / b;
+}
+
+
+- Accepts two integers.
+- Checks whether the divisor is zero.
+- Throws an exception if it is zero.
+- Otherwise, returns the division result.
+This is our application logic, which we want to test.
+Step 5: Write the JUnit 5 test class
+File: CalculatorTest.java
+
+Location: src/test/java/CalculatorTest.java relative to the project root.
+
+import org.junit.jupiter.api.Test;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+public class CalculatorTest {
+
+    Calculator calculator = new Calculator();
+
+    @Test
+    void testAdd() {
+        assertEquals(5, calculator.add(2, 3));
+    }
+
+    @Test
+    void testDivide() {
+        assertEquals(2, calculator.divide(10, 5));
+    }
+
+    @Test
+    void testDivideByZero() {
+        assertThrows(
+            IllegalArgumentException.class,
+            () -> calculator.divide(10, 0)
+        );
+    }
+}
+
+
+
+Explanation of the test code
+1. @Test
+
+Identifies a method that JUnit should execute as a test.
+
+2. assertEquals(expected, actual)
+
+Checks whether the actual result matches the expected result.
+assertEquals(5, calculator.add(2, 3));
+
+
+Expected result: 5
+
+Actual result: 5
+
+Therefore, the test passes.
+
+3. assertThrows()
+
+Checks whether a particular exception is thrown.
+assertThrows(
+    IllegalArgumentException.class,
+    () -> calculator.divide(10, 0)
+);
+
+
+This test passes when dividing by zero throws IllegalArgumentException.
+
+Our test class contains three tests: addition, division, and division by zero.
+Step 6: Understand the pom.xml file
+The pom.xml file is the central configuration file for a Maven project.
+
+POM stands for Project Object Model.
+
+It tells Maven the project's identity, Java version, dependencies, and build plugins.
+
+Here is the configuration we used:
+
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>learning.calculator</groupId>
+    <artifactId>deutschland</artifactId>
+    <version>1.0-SNAPSHOT</version>
+
+    <properties>
+        <maven.compiler.release>17</maven.compiler.release>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <junit.version>5.10.2</junit.version>
+    </properties>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter</artifactId>
+            <version>${junit.version}</version>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>3.2.5</version>
+            </plugin>
+        </plugins>
+    </build>
+
+</project>
+
+
+
+Important POM elements
+Element	Meaning
+modelVersion	Specifies the POM model version
+groupId	Identifies the project group
+artifactId	Names the project artifact
+version	Specifies the project version
+properties	Defines settings such as Java and JUnit versions
+dependencies	Lists external libraries the project needs
+build	Configures the build process and plugins
+Why did we add JUnit as a dependency?
+<dependency>
+    <groupId>org.junit.jupiter</groupId>
+    <artifactId>junit-jupiter</artifactId>
+    <version>${junit.version}</version>
+    <scope>test</scope>
+</dependency>
+
+
+JUnit is an external library. Maven downloads it and makes it available when compiling and running our tests.
+
+The test scope means this dependency is needed for testing rather than normal application compilation or runtime.
+Why did we add Surefire?
+<plugin>
+    <groupId>org.apache.maven.plugins</groupId>
+    <artifactId>maven-surefire-plugin</artifactId>
+    <version>3.2.5</version>
+</plugin>
+
+
+The Maven Surefire Plugin runs tests during the Maven test phase. It detected the JUnit Platform and executed our CalculatorTest class.
+Step 7: Run Maven commands
+First, open Command Prompt in the directory containing pom.xml.
+
+For your current setup:
+cd /d "C:\Users\kavya\OneDrive\Desktop\JAVAAAAA\JUnit5\src"
+
+
+Command 1: mvn test
+mvn test
+
+
+What Maven does:
+1. Reads pom.xml.
+2. Resolves required dependencies and plugins.
+3. Compiles the application code.
+4. Compiles the test code.
+5. Runs the JUnit tests.
+6. Displays the test results.
+Your actual output confirmed:
+Tests run: 3, Failures: 0, Errors: 0, Skipped: 0
+BUILD SUCCESS
+
+
+This means all three tests passed.
+Command 2: mvn package
+mvn package
+
+
+What Maven does:
+1. Compiles the code if necessary.
+2. Runs the tests.
+3. Packages the compiled application into a JAR file.
+Your output confirmed that Maven created:
+target\JUnit5-1.0-SNAPSHOT.jar
+
+
+The JAR is a package of compiled Java classes and resources. It is not automatically an executable application; making it runnable with java -jar would require an appropriate entry point and manifest configuration.
+Command 3: mvn clean
+mvn clean
+
+
+Removes generated build output, usually the target directory. This allows Maven to build from a clean state.
+
+We encountered a file-deletion error when running mvn clean test, so we avoided repeating that command until the file-lock issue could be addressed.
+Step 8: Understand the Maven lifecycle
+Maven has a sequence of build phases.
+
+Compile
+
+Convert Java source code into .class files.
+
+
+
+Test
+
+Run automated tests using JUnit.
+
+
+
+Package
+
+Create a distributable artifact such as a JAR.
+
+
+
+When you run mvn package, Maven executes the earlier required phases, including compilation and testing, before packaging the artifact.
+Step 9: Why is this useful in a real company?
+Imagine you are developing a banking application.
+- Java contains the account, deposit, and withdrawal logic.
+- JUnit tests check balance calculations and invalid operations.
+- Maven manages libraries, compiles the application, runs tests, and creates a build artifact.
+- A build pipeline can run Maven automatically whenever developers submit code.
+This helps detect bugs early and makes builds more repeatable.
+Final revision
+Question	                 Answer
+What is Maven?     	        A Java build automation and dependency management tool
+
+What is JUnit 5?  	        A framework for writing and running Java tests
+
+What is pom.xml?	        Maven's project configuration file
+
+Why use dependencies?	    To use external libraries without managing their JAR files manually
+
+What does mvn test do?	     Compiles code and executes tests
+
+What does mvn package do?	Runs earlier build phases and packages the project
+
+What is a JAR?	            An archive containing compiled classes and resources
+
+Why use mvn clean?          To remove generated build output
+
+The complete workflow we followed: Write Java code → write JUnit tests → configure pom.xml → run mvn test → confirm the tests pass → run mvn package → create the JAR file.
