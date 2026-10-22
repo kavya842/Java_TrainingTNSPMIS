@@ -61,6 +61,7 @@ Dini meaning:
 - Division test pass ayyindi.
 - Zero tho divide chesinappudu exception vastundo test pass ayyindi.
 Tarvatha mvn package run chesinappudu Maven mana project ki JAR file create chesindi.
+
 3. Real company lo idi ela useful?
 Suppose nuvvu banking application develop chestunnav. Account balance calculate cheyyadaniki code rasav.
 - BankAccount.java — actual application logic.
@@ -68,6 +69,7 @@ Suppose nuvvu banking application develop chestunnav. Account balance calculate 
 - pom.xml — required dependencies and build settings.
 - Maven — code ni compile chesi tests run chesi, application ni package chestundi.
 Code change chesina prathi sari tests run cheyyachu. Dini valla bugs ni early ga identify cheyyagalamu.
+
 4. Ee concepts gurthupettuko
 Technology	Main purpose
 Java	Application develop cheyyadaniki
@@ -78,34 +80,6 @@ JAR	Compiled Java classes and resources ni package chesina file
 Simple ga cheppalante: Java tho code rastam, JUnit tho code correct ga undo test chestam, Maven tho ee process ni automate chesi application ni package chestam.
 
 Ippudu neeku Maven enduku use chestamo clear ayyinda? Next manam pom.xml lo dependency add chesthe Maven automatic ga library ni ela download chestundo practical example tho nerchukovachu.
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-give me all content in english step by step what we do
-
-
-
-
-
-
-
-
-
-
-
 
 
 Maven + JUnit 5 — Complete Step-by-Step Notes
