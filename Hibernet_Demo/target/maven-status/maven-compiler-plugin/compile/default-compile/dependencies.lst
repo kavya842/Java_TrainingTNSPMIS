@@ -1,0 +1,5 @@
+classpath:C:\Users\kavya\.m2\repository\com\mysql\mysql-connector-j\26.10.0\mysql-connector-j-26.10.0.jar	2618793:1792496216000
+classpath:C:\Users\kavya\.m2\repository\com\google\protobuf\protobuf-java\4.36.1\protobuf-java-4.36.1.jar	1795060:1792650531777
+classpath:C:\Users\kavya\.m2\repository\org\hibernate\orm\hibernate-core\7.4.14.Final\hibernate-core-7.4.14.Final.jar	15350391:1792888037000
+classpath:C:\Users\kavya\.m2\repository\jakarta\persistence\jakarta.persistence-api\3.2.0\jakarta.persistence-api-3.2.0.jar	195939:1712739547000
+classpath:C:\Users\kavya\.m2\repository\jakarta\transaction\jakarta.transaction-api\2.0.1\jakarta.transaction-api-2.0.1.jar	28607:1648723059000
